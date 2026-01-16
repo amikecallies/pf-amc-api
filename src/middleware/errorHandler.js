@@ -24,9 +24,7 @@ export const errorHandler = (err, res) => {
 
   // Default error response
   const statusCode = err.statusCode || 500;
-  const message = config.nodeEnv === 'production'
-    ? 'An unexpected error occurred. Please try again later.'
-    : err.message;
+  const message = err.message;
 
   res.status(statusCode).json({
     success: false,
