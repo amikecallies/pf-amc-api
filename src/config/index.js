@@ -11,14 +11,14 @@ const config = {
   // AWS SES Configuration
   aws: {
     region: process.env.AWS_REGION || 'us-west-2',
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID || 'AKIA4HJMF54KT4FN2KNY',
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY || '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',
   },
 
   // Email Configuration
   email: {
-    from: process.env.EMAIL_FROM || 'noreply@adriancallies.com',
-    to: process.env.EMAIL_TO || 'amcallies2018@gmail.com',
+    from: process.env.EMAIL_FROM || 'no-reply@adriancallies.com', // default value (should be overwritten)
+    to: process.env.EMAIL_TO || 'adrianm.callies@gmail.com',
   },
 
   // Rate Limiting
