@@ -11,8 +11,8 @@ const config = {
   // AWS SES Configuration
   aws: {
     region: process.env.AWS_REGION || 'us-west-2',
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID || 'AKIA4HJMF54KT4FN2KNY',
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY || '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',
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
   },
 
   // Email Configuration
