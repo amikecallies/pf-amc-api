@@ -8,7 +8,7 @@ const router = express.Router();
 // POST /api/contact
 router.post(
   '/',
-  //contactRateLimiter,
+  contactRateLimiter,
   contactValidation,
   submitContact
 );
