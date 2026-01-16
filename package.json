@@ -1,0 +1,30 @@
+{
+  "name": "pf-amc-api",
+  "version": "1.0.0",
+  "description": "Backend API for Adrian Callies Portfolio Website",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "keywords": [
+    "portfolio",
+    "api",
+    "express"
+  ],
+  "author": "Adrian Callies",
+  "license": "MIT",
+  "dependencies": {
+    "@aws-sdk/client-ses": "^3.721.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "express-validator": "^7.2.1",
+    "helmet": "^8.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
