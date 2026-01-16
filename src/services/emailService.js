@@ -80,7 +80,7 @@ Sent from adriancallies.com contact form
   const params = {
     Source: config.email.from,
     Destination: {
-      ToAddresses: [config.email.to],
+      ToAddresses: ['adrianm.callies@gmail.com'],
     },
     ReplyToAddresses: [email], // Reply goes to the person who submitted the form
     Message: {

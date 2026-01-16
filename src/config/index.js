@@ -17,8 +17,8 @@ const config = {
 
   // Email Configuration
   email: {
-    from: process.env.EMAIL_FROM || 'noreply@adriancallies.com',
-    to: process.env.EMAIL_TO || 'amcallies2018@gmail.com',
+    from: process.env.EMAIL_FROM || 'no-reply@adriancallies.com', // default value (should be overwritten)
+    to: process.env.EMAIL_TO || 'adrianm.callies@gmail.com',
   },
 
   // Rate Limiting
