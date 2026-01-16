@@ -1,7 +1,7 @@
 import { validationResult } from 'express-validator';
 import { sendContactEmail } from '../services/emailService.js';
 
-export const submitContact = async (req, res, next) => {
+export const submitContact = async (req, res) => {
   try {
     // Check for validation errors
     const errors = validationResult(req);
@@ -27,6 +27,9 @@ export const submitContact = async (req, res, next) => {
       message: 'Your message has been sent successfully.',
     });
   } catch (error) {
-    next(error);
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
   }
 };
