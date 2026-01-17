@@ -29,7 +29,7 @@ export const submitContact = async (req, res) => {
   } catch (error) {
     res.status(500).json({
       success: false,
-      message: error,
+      message: error.message,
     });
   }
 };
