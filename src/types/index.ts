@@ -40,8 +40,8 @@ export interface AppConfig {
   corsOrigins: string[];
   aws: {
     region: string;
-    accessKeyId: string | undefined;
-    secretAccessKey: string | undefined;
+    accessKeyId: string;
+    secretAccessKey: string;
   };
   email: {
     from: string;
