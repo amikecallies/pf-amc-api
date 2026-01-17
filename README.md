@@ -1,6 +1,6 @@
 # Portfolio API (pf-amc-api)
 
-Backend API for Adrian Callies Portfolio Website. Built with Express.js and deployed on Railway.
+Backend API for Adrian Callies Portfolio Website. Built with Express.js and TypeScript, deployed on Railway.
 
 ## Features
 
@@ -9,6 +9,7 @@ Backend API for Adrian Callies Portfolio Website. Built with Express.js and depl
 - ✅ Input validation and sanitization
 - 🔒 Security headers with Helmet
 - 🌐 CORS configured for frontend domains
+- 📘 Full TypeScript support with strict type checking
 
 ## Getting Started
 
@@ -50,11 +51,17 @@ cp .env.example .env
 ### Running Locally
 
 ```bash
-# Development mode (with auto-reload)
+# Development mode (with auto-reload and TypeScript)
 npm run dev
 
-# Production mode
+# Build TypeScript to JavaScript
+npm run build
+
+# Production mode (runs compiled JavaScript)
 npm start
+
+# Type check without emitting files
+npm run typecheck
 ```
 
 ### API Endpoints
@@ -113,7 +120,7 @@ Content-Type: application/json
 4. Add environment variables in Railway dashboard
 5. Deploy!
 
-Railway will automatically detect the Node.js project and run `npm start`.
+Railway will automatically detect the Node.js project and run `npm run build` followed by `npm start`.
 
 ## AWS SES Setup
 
@@ -129,26 +136,47 @@ To avoid emails going to spam:
 ```
 pf-amc-api/
 ├── src/
-│   ├── index.js              # Express app entry point
+│   ├── index.ts              # Express app entry point
 │   ├── config/
-│   │   └── index.js          # Configuration management
+│   │   └── index.ts          # Configuration management
+│   ├── types/
+│   │   └── index.ts          # Shared TypeScript type definitions
 │   ├── routes/
-│   │   ├── index.js          # Route aggregator
-│   │   └── contact.js        # Contact endpoint
+│   │   ├── index.ts          # Route aggregator
+│   │   └── contact.ts        # Contact endpoint
 │   ├── controllers/
-│   │   └── contactController.js
+│   │   └── contactController.ts
 │   ├── services/
-│   │   └── emailService.js   # AWS SES integration
+│   │   └── emailService.ts   # AWS SES integration
 │   ├── middleware/
-│   │   ├── rateLimiter.js
-│   │   ├── validator.js
-│   │   └── errorHandler.js
+│   │   ├── rateLimiter.ts
+│   │   ├── validator.ts
+│   │   └── errorHandler.ts
 │   └── utils/
+├── dist/                     # Compiled JavaScript (generated)
 ├── .env.example
 ├── .gitignore
 ├── package.json
+├── tsconfig.json
 └── README.md
 ```
+
+## TypeScript
+
+This project uses TypeScript with strict type checking. Key type definitions can be found in `src/types/index.ts`:
+
+- `ContactFormData` - Contact form submission payload
+- `ApiSuccessResponse` / `ApiErrorResponse` - Standard API response types
+- `AppConfig` - Application configuration structure
+
+### Scripts
+
+| Script | Description |
+|--------|-------------|
+| `npm run dev` | Start development server with hot reload (tsx) |
+| `npm run build` | Compile TypeScript to JavaScript |
+| `npm start` | Run compiled production build |
+| `npm run typecheck` | Run TypeScript type checking |
 
 ## License
 

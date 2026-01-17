@@ -6,11 +6,6 @@ import { contactRateLimiter } from '../middleware/rateLimiter.js';
 const router = express.Router();
 
 // POST /api/contact
-router.post(
-  '/',
-  //contactRateLimiter,
-  contactValidation,
-  submitContact
-);
+router.post('/', contactRateLimiter, contactValidation, submitContact);
 
 export default router;
