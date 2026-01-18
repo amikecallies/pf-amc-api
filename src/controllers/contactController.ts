@@ -5,6 +5,18 @@ import type { ContactFormData } from '../types/index.js';
 
 export const submitContact = async (req: Request, res: Response): Promise<void> => {
   try {
+
+    // API Key Validation
+    const apiKey = req.header('X-API-KEY');
+
+    if (!apiKey || apiKey !== process.env.API_SECRET_KEY) {
+      res.status(403).json({ 
+        success: false,
+        error: 'Forbidden: Client is not authorized.' 
+      });
+      return;
+    }
+          
     // Check for validation errors
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
