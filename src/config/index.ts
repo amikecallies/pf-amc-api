@@ -8,7 +8,7 @@ const config: AppConfig = {
   // CORS - Add your frontend domain(s) here
   corsOrigins: process.env.CORS_ORIGINS
     ? process.env.CORS_ORIGINS.split(',')
-    : ['http://localhost:3000', 'https://adriancallies.com'],
+    : ['http://localhost:3000', 'https://adriancallies.com', 'https://*vigorous-wozniak-60b75a.netlify.app'],
 
   // AWS SES Configuration
   aws: {

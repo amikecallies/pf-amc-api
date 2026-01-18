@@ -18,7 +18,7 @@ app.use(helmet());
 // CORS configuration
 app.use(
   cors({
-    // origin: config.corsOrigins,
+    origin: config.corsOrigins,
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type', 'x-Api-Key'],
   })
