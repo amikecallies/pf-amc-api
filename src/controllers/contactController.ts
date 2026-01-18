@@ -7,7 +7,7 @@ export const submitContact = async (req: Request, res: Response): Promise<void> 
   try {
 
     // API Key Validation
-    const apiKey = req.header('X-API-KEY');
+    const apiKey = req.header('x-Api-Key');
 
     if (!apiKey || apiKey !== process.env.API_SECRET_KEY) {
       res.status(403).json({ 
