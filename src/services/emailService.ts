@@ -101,7 +101,7 @@ Sent from adriancallies.com contact form
     ReplyToAddresses: [email], // Reply goes to the person who submitted the form
     Message: {
       Subject: {
-        Data: `[adriancallies.com - Contact Form] ${subject}`,
+        Data: `[adriancallies.com - Contact Form]: ${subject}`,
         Charset: 'UTF-8',
       },
       Body: {
