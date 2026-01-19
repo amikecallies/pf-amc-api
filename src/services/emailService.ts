@@ -53,7 +53,7 @@ export const sendContactEmail = async ({
       <body>
         <div class="container">
           <div class="header">
-            <h1>Adrian! You got a new message &#1F41F;</h1>
+            <h1>Adrian! You got a new message &#128031;</h1>
           </div>
           <div class="content">
             <div class="field">
