@@ -19,7 +19,7 @@ app.use(helmet());
 app.use(
   cors({
     origin: (origin: string | undefined, callback) => {
-      console
+      console.log('Origin: ', origin);
       const previewUrlRegex = /^https:\/\/deploy-preview-(\d+)--vigorous-wozniak-60b75a\.netlify\.app\/$/;
 
       const isValidPreviewUrl = origin?.match(previewUrlRegex);
