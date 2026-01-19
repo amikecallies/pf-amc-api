@@ -19,22 +19,27 @@ app.use(helmet());
 app.use(
   cors({
     origin: (origin: string | undefined, callback) => {
-      console.log('Origin: ', origin);
-      const previewUrlRegex = /^https:\/\/deploy-preview-(\d+)--vigorous-wozniak-60b75a\.netlify\.app\/$/;
+      try {
+        // 2. Corrected Regex: Removed the trailing slash \/ before the $
+        const previewUrlRegex = /^https:\/\/deploy-preview-(\d+)--vigorous-wozniak-60b75a\.netlify\.app$/;
+        const isValidPreviewUrl = previewUrlRegex.test(origin?? '');
+        const isAllowlisted = config.corsOrigins.includes(origin?? '');
 
-      const isValidPreviewUrl = origin?.match(previewUrlRegex);
-
-      if (origin !== undefined) {
-        if (isValidPreviewUrl || config.corsOrigins.indexOf(origin) !== -1) {
+        if (isValidPreviewUrl || isAllowlisted) {
           callback(null, true);
         } else {
+          // It's helpful to log the origin that failed so you can debug in production
+          console.warn(`CORS blocked for origin: ${origin}`);
           callback(new Error('CORS error: Not allowed'));
         }
+      } catch (error) {
+        console.error('CORS logic error:', error);
+        callback(error instanceof Error ? error : new Error('Internal CORS error'));
       }
-
     },
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type', 'x-Api-Key'],
+    credentials: true // Set this to true if you ever use cookies or sessions
   })
 );
 
