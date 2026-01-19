@@ -30,6 +30,6 @@ export const contactValidation = [
     .trim()
     .notEmpty()
     .withMessage('Message is required')
-    .isLength({ min: 10, max: 5000 })
-    .withMessage('Message must be between 10 and 5000 characters'),
+    .isLength({ min: 1, max: 5000 })
+    .withMessage('Message must be between 1 and 5000 characters'),
 ];
