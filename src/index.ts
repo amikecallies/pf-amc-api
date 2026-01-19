@@ -18,7 +18,21 @@ app.use(helmet());
 // CORS configuration
 app.use(
   cors({
-    origin: config.corsOrigins,
+    origin: (origin: string | undefined, callback) => {
+      console.log('Origin: ', origin);
+      const previewUrlRegex = /^https:\/\/deploy-preview-(\d+)--vigorous-wozniak-60b75a\.netlify\.app\/$/;
+
+      const isValidPreviewUrl = origin?.match(previewUrlRegex);
+
+      if (origin !== undefined) {
+        if (isValidPreviewUrl || config.corsOrigins.indexOf(origin) !== -1) {
+          callback(null, true);
+        } else {
+          callback(new Error('CORS error: Not allowed'));
+        }
+      }
+
+    },
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type', 'x-Api-Key'],
   })
