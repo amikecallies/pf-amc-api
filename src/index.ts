@@ -22,7 +22,6 @@ app.use(
       try {
         // 2. Corrected Regex: Removed the trailing slash \/ before the $
         const previewUrlRegex = /^https:\/\/deploy-preview-(\d+)--vigorous-wozniak-60b75a\.netlify\.app$/;
-        
         const isValidPreviewUrl = previewUrlRegex.test(origin?? '');
         const isAllowlisted = config.corsOrigins.includes(origin?? '');
 
