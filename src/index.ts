@@ -18,19 +18,17 @@ app.use(helmet());
 // CORS configuration
 app.use(
   cors({
-    origin: (origin, callback) => {
-      if (origin) {
-        const previewUrlRegex = /^https:\/\/deploy-preview-(\d+)--vigorous-wozniak-60b75a\.netlify\.app\/$/;
+    origin: (origin: string | undefined, callback) => {
+      const previewUrlRegex = /^https:\/\/deploy-preview-(\d+)--vigorous-wozniak-60b75a\.netlify\.app\/$/;
 
-        const isValidPreviewUrl = origin?.match(previewUrlRegex);
+      const isValidPreviewUrl = origin?.match(previewUrlRegex);
 
+      if (origin !== undefined) {
         if (isValidPreviewUrl || config.corsOrigins.indexOf(origin) !== -1) {
           callback(null, true);
         } else {
           callback(new Error('CORS error: Not allowed'));
         }
-      } else {
-        callback(new Error('CORS error: Invalid origin'));
       }
 
     },
