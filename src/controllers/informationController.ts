@@ -32,7 +32,7 @@ export const getInformation = async (req: Request, res: Response): Promise<void>
 
     const collection = databaseService.getCollection('information');
 
-    const data = collection.find({});
+    const data = await collection.find({});
 
     res.status(200).json({
       success: true,
