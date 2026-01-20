@@ -1,9 +1,9 @@
 import express from 'express';
-import { getInformation } from '../controllers/informationController.js';
+import { getReviews } from '../controllers/reviewsController.js';
 
 const router = express.Router();
 
 // POST /api/contact
-router.get('/', getInformation);
+router.get('/', getReviews);
 
 export default router;

@@ -1,9 +1,9 @@
 import express from 'express';
-import { getInformation } from '../controllers/informationController.js';
+import { getExperiences } from '../controllers/experiencesController.js';
 
 const router = express.Router();
 
 // POST /api/contact
-router.get('/', getInformation);
+router.get('/', getExperiences);
 
 export default router;

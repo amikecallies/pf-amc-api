@@ -1,9 +1,9 @@
 import express from 'express';
-import { getInformation } from '../controllers/informationController.js';
+import { getPortfolios } from '../controllers/portfoliosController.js';
 
 const router = express.Router();
 
 // POST /api/contact
-router.get('/', getInformation);
+router.get('/', getPortfolios);
 
 export default router;
