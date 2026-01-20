@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 import routes from './routes/index.js';
 import { errorHandler } from './middleware/errorHandler.js';
 import config from './config/index.js';
+import { databaseService } from './services/database.js';
 
 // Load environment variables
 dotenv.config();
@@ -57,9 +58,38 @@ app.use('/api', routes);
 // Global error handler
 app.use(errorHandler);
 
-// Start server
-const PORT = config.port;
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
-  console.log(`📍 Health check: http://localhost:${PORT}/api/health`);
+/**
+ * Initialize database connection and start server
+ */
+async function startServer() {
+  try {
+    // Connect to MongoDB before starting the server
+    await databaseService.connect();
+
+    // Start Express server
+    const PORT = config.port;
+    app.listen(PORT, () => {
+      console.log(`🚀 Server running on port ${PORT}`);
+      console.log(`📍 Health check: http://localhost:${PORT}/api/health`);
+    });
+  } catch (error) {
+    console.error('Failed to start server:', error);
+    process.exit(1);
+  }
+}
+
+// Graceful shutdown handling
+process.on('SIGINT', async () => {
+  console.log('\n🛑 Received SIGINT, shutting down gracefully...');
+  await databaseService.close();
+  process.exit(0);
 });
+
+process.on('SIGTERM', async () => {
+  console.log('\n🛑 Received SIGTERM, shutting down gracefully...');
+  await databaseService.close();
+  process.exit(0);
+});
+
+// Start the server
+startServer();

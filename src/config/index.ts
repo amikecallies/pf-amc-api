@@ -10,6 +10,11 @@ const config: AppConfig = {
     ? process.env.CORS_ORIGINS.split(',')
     : ['http://localhost:3000', 'https://adriancallies.com'],
 
+  // MongoDB Configuration
+  mongodb: {
+    uri: process.env.MONGO_URL || '',
+  },
+
   // AWS SES Configuration
   aws: {
     region: process.env.AWS_REGION || 'us-west-2',
