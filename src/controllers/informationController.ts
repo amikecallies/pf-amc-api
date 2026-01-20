@@ -36,9 +36,8 @@ export const getInformation = async (req: Request, res: Response): Promise<void>
     const data = await collection.findOne({});
 
     // Success response
-    res.status(200).json({
-      data
-    });
+    res.status(200).json(data);
+
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : 'An unexpected error occurred';
     res.status(500).json({
