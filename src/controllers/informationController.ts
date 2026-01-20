@@ -30,10 +30,13 @@ export const getInformation = async (req: Request, res: Response): Promise<void>
       return;
     }
 
+ 
     const collection = databaseService.getCollection('information');
 
-    const data = await collection.find({});
+    // Example query - modify based on your needs
+    const data = await collection.findOne({});
 
+    // Success response
     res.status(200).json({
       success: true,
       message: 'Information retrieved successfully.',
