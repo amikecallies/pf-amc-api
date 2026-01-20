@@ -5,6 +5,7 @@ import experienceRoutes from './experiences.js';
 import reviewsRoutes from './reviews.js';
 import skillsRoutes from './skills.js';
 import portfoliosRoutes from './portfolios.js';
+import servicesRoutes from './services.js';
 // import blogsRoutes from './blogs.js';
 
 const router = express.Router();
@@ -16,6 +17,7 @@ router.use('/experiences', experienceRoutes);
 router.use('/reviews', reviewsRoutes);
 router.use('/skills', skillsRoutes);
 router.use('/portfolios', portfoliosRoutes);
+router.use('/services', servicesRoutes);
 // router.use('/blogs', blogsRoutes);
 
 export default router;
