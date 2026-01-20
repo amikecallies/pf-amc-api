@@ -12,7 +12,7 @@ const router = express.Router();
 // Mount route modules
 router.use('/contact', contactRoutes);
 router.use('/information', informationRoutes);
-router.use('/experience', experienceRoutes);
+router.use('/experiences', experienceRoutes);
 router.use('/reviews', reviewsRoutes);
 router.use('/skills', skillsRoutes);
 router.use('/portfolios', portfoliosRoutes);
