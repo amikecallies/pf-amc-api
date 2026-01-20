@@ -33,14 +33,11 @@ export const getInformation = async (req: Request, res: Response): Promise<void>
  
     const collection = databaseService.getCollection('information');
 
-    // Example query - modify based on your needs
     const data = await collection.findOne({});
 
     // Success response
     res.status(200).json({
-      success: true,
-      message: 'Information retrieved successfully.',
-      data: data,
+      data
     });
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : 'An unexpected error occurred';
