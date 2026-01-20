@@ -38,6 +38,9 @@ export interface AppConfig {
   port: number;
   nodeEnv: string;
   corsOrigins: string[];
+  mongodb: {
+    uri: string;
+  };
   aws: {
     region: string;
     accessKeyId: string;
